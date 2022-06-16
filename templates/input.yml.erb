@@ -22,11 +22,7 @@
   protocol.<%= @syslog_protocol %>:
     host: <%= @syslog_host %>
   <%- elsif @input_type == 'journald' -%>
-  <%- if @journald_id -%>
-  <%- @journald_id.each do | id| -%>
   id: <%= @journald_id %>
-  <%- end -%>
-  <%- end -%>
   <%- if @journald_include_matches -%>
   include_matches:
     <%- @journald_include_matches.each do | match| -%>
