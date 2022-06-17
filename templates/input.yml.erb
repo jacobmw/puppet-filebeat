@@ -31,6 +31,7 @@
   <%- end -%>
   <%- end -%>
   <%- else -%>
+  <%- if @input_type != 'journald' -%>
   paths:
   <%- @paths.each do |log_path| -%>
   - <%= log_path %>
@@ -193,6 +194,7 @@
   # Note: Potential data loss. Make sure to read and understand the docs for this option.
   <%- if @close_timeout -%>
   close_timeout: <%= @close_timeout %>
+  <%- end -%>
   <%- end -%>
   <%- end -%>
   <%- # Everything below this can be applied to any input. -%>
