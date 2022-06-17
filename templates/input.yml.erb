@@ -30,7 +30,7 @@
     <%- end -%>
   <%- end -%>
   <%- end -%>
-  <%- elsif @input_type == 'journald' -%>
+  <%- elsif @input_type != 'journald' -%>
   paths:
   <%- @paths.each do |log_path| -%>
   - <%= log_path %>
