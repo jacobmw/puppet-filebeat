@@ -165,13 +165,16 @@
 #   Where to start reading files: head, tail, or cursor
 #
 # @param max_message_size
-#   Maximum size of a single message
+#   Maximum size of a single message received over TCP or UDP
 #
 # @param index
-#   Elasticsearch index to write to
+#   Elasticsearch index to write to for this input
 #
 # @param publisher_pipeline_disable_host
 #   Whether to disable the host field in the publisher pipeline (default: false)
+#
+# @param fingerprint_length
+#   When using the filestream input, sets prospector.scanner.fingerprint.length to control fingerprint size
 #
 define filebeat::input (
   Enum['absent', 'present'] $ensure        = present,
@@ -226,6 +229,7 @@ define filebeat::input (
   Optional[String] $max_message_size       = undef,
   Optional[String] $index                  = undef,
   Boolean $publisher_pipeline_disable_host = false,
+  Optional[Integer] $fingerprint_length    = undef,
 ) {
   if 'filebeat_version' in $facts and $facts['filebeat_version'] != false {
     if versioncmp($facts['filebeat_version'], '6') > 0 {
