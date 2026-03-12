@@ -101,7 +101,7 @@
       <%- if @scan_frequency -%>
       check_interval: <%= @scan_frequency %>
       <%- end -%>
-      <%- if @fingerprint.length > 0 -%>
+      <%- if @fingerprint -%>
       fingerprint:
         <%- @fields.each_pair do |k, v| -%>
         <%= k %>: <%= v %>
