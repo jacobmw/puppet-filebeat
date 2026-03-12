@@ -226,7 +226,7 @@ define filebeat::input (
   Optional[String] $max_message_size       = undef,
   Optional[String] $index                  = undef,
   Boolean $publisher_pipeline_disable_host = false,
-  Optional[Hash] $fingerprint              = undef,
+  Optional[Boolean] $fingerprint_disable   = undef,
 ) {
   if 'filebeat_version' in $facts and $facts['filebeat_version'] != false {
     if versioncmp($facts['filebeat_version'], '6') > 0 {
