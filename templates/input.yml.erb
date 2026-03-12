@@ -94,15 +94,18 @@
   document_type: <%= @doc_type %>
     <%- end -%>
   <%- end -%>
-  <%- if @scan_frequency or @exclude_files or @fingerprint_length -%>
+  <%- if @scan_frequency or @exclude_files or @fingerprint.length > 0 -%>
     <%- if @input_type == 'filestream' -%>
   prospector:
     scanner:
       <%- if @scan_frequency -%>
       check_interval: <%= @scan_frequency %>
       <%- end -%>
-      <%- if @fingerprint_length -%>
-      fingerprint.length: <%= @fingerprint_length %>
+      <%- if @fingerprint.length > 0 -%>
+      fingerprint:
+        <%- @fields.each_pair do |k, v| -%>
+        <%= k %>: <%= v %>
+        <%- end -%>
       <%- end -%>
       <%- if @exclude_files.length > 0 -%>
       exclude_files:
